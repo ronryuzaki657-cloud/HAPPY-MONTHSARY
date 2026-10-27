@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A private letter, written just for you." />
+  <title>For You 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== ATMOSPHERE (sky, stars, candle glow) ===== -->
+  <div class="sky" aria-hidden="true">
+    <div class="moon"></div>
+    <canvas id="starfield"></canvas>
+    <div class="candle-glow"></div>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+  </div>
+
+  <!-- ===== MUSIC TOGGLE ===== -->
+  <button id="musicToggle" class="music-toggle" aria-label="Play music" aria-pressed="false" title="Music">
+    <span class="music-icon" aria-hidden="true">♪</span>
+  </button>
+
+  <button id="skipBtn" class="skip-btn hidden" aria-label="Skip animation">Skip ✨</button>
+
+  <main id="stage">
+
+    <!-- ===== SCENE 1: THE ENVELOPE ===== -->
+    <section id="scene-envelope" class="scene" aria-label="A sealed letter">
+      <p class="envelope-hint">Something arrived for you, under the midnight sky…</p>
+      <button id="envelope" class="envelope" aria-label="Open the letter">
+        <div class="envelope-back"></div>
+        <div class="envelope-letter" aria-hidden="true"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-front"></div>
+        <div class="envelope-address">
+          <span class="addr-small">To:</span>
+          <span id="addrName">My Very Beautiful Love</span>
+        </div>
+        <div class="seal" aria-hidden="true"><span>♥</span></div>
+        <div class="envelope-glow" aria-hidden="true"></div>
+      </button>
+      <p class="envelope-tap">tap to open</p>
+    </section>
+
+    <!-- ===== SCENE 2: THE LETTER ===== -->
+    <section id="scene-letter" class="scene hidden" aria-label="The letter">
+      <div class="paper" role="article">
+        <div class="paper-top">
+          <span class="doodle doodle-l">✧</span>
+          <p class="paper-date" id="letterDate">October 28, 2026</p>
+          <span class="doodle doodle-r">✧</span>
+        </div>
+        <p class="paper-greeting" id="letterGreeting">My love,</p>
+        <div id="letterBody" class="paper-body" aria-live="polite"></div>
+        <p class="paper-sign" id="letterSign">— Yours, always</p>
+        <button id="revealAllBtn" class="btn btn-ghost" aria-label="Reveal the whole letter at once">Show me everything</button>
+
+        <!-- hidden notes: tiny stars/hearts sprinkled on the paper -->
+        <div class="secrets" aria-label="Hidden notes">
+          <button class="secret secret-1" aria-label="A hidden note">✦</button>
+          <button class="secret secret-2" aria-label="A hidden note">♥</button>
+          <button class="secret secret-3" aria-label="A hidden note">✦</button>
+          <button class="secret secret-4" aria-label="A hidden note">♥</button>
+        </div>
+
+        <!-- handwritten annotations -->
+        <span class="annotation annotation-1" aria-hidden="true">(read slowly, okay?)</span>
+        <span class="annotation annotation-2" aria-hidden="true">← this part is my favorite</span>
+      </div>
+
+      <button id="sealBtn" class="seal-btn" aria-label="Break the seal to reveal a promise">
+        <span class="seal-heart" aria-hidden="true">♥</span>
+        <span class="seal-label">Break the seal</span>
+      </button>
+      <p id="promiseText" class="promise-text hidden" aria-live="polite"></p>
+
+      <button id="moreBtn" class="btn btn-primary">There's one more thing…</button>
+    </section>
+
+    <!-- ===== SCENE 3: THE FINAL MOMENT ===== -->
+    <section id="scene-final" class="scene hidden" aria-label="A final message">
+      <canvas id="shower"></canvas>
+      <div class="final-heart" aria-hidden="true">
+        <svg viewBox="0 0 32 29" class="heart-svg"><path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,20.4c6.1-8.4,16-11.1,16-20.4C32,3.8,28.2,0,23.6,0z"/></svg>
+      </div>
+      <h2 class="final-title" id="finalTitle">Happy Monthsary</h2>
+      <p class="final-message" id="finalMessage"></p>
+      <p class="final-close" id="finalClose"></p>
+      <button id="replayBtn" class="btn btn-ghost" aria-label="Read the letter again">↺ Read it again</button>
+    </section>
+
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
